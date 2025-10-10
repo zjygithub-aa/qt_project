@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="关闭按钮_蓝色">img/close_1.png</file>
+        <file alias="关闭按钮_红色">img/close_2.png</file>
+        <file alias="关闭按钮_灰色">img/close_3.png</file>
+        <file alias="头像">img/head_img.png</file>
+        <file alias="未定义菜单">img/menu_0.png</file>
+        <file alias="智能对话">img/menu_1.png</file>
+        <file alias="视觉识别">img/menu_2.png</file>
+        <file alias="智能家居">img/menu_3.png</file>
+        <file alias="天气预报">img/menu_4.png</file>
+        <file alias="工控大屏">img/menu_5.png</file>
+        <file alias="电机控制">img/menu_6.png</file>
+        <file alias="状态按钮_关">img/home_start_close.png</file>
+        <file alias="状态按钮_开">img/home_start_open.png</file>
+    </qresource>
+</RCC>

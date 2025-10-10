@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/prefix1"/>
+    <qresource prefix="/">
+        <file>C:/Users/jiayangdada/Downloads/city_id.txt</file>
+    </qresource>
+</RCC>
