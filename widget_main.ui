@@ -94,7 +94,7 @@
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap resource="img.qrc">:/头像</pixmap>
+               <pixmap resource="img.qrc">:/img/head_img.png</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>

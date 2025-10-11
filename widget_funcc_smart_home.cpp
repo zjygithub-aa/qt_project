@@ -6,7 +6,6 @@
 #include <QSslSocket>
 #include <QTextCodec>
 
-
 // ---------------- MusicSearchDialog 实现 ----------------
 MusicSearchDialog::MusicSearchDialog(QWidget *parent)
     : QDialog(parent),
@@ -175,6 +174,46 @@ Widget_funcC_Smart_Home::Widget_funcC_Smart_Home(QWidget *parent)
     connect(tcpSocket, &QTcpSocket::readyRead, this, &Widget_funcC_Smart_Home::onReadyRead);
     connect(tcpSocket, &QTcpSocket::disconnected, this, &Widget_funcC_Smart_Home::onDisconnected);
     connectToServer();
+
+    // --- 初始化设备图标（使用你资源路径 :/img/xxxx.png 和 :/img/xxxx1.png） ---
+    // 默认均为关闭状态（如果你想启动时某些为开，修改对应 bool 变量）
+    air_on = false;
+    tv_on = false;
+    robot_on = false;
+    toaster_on = false;
+    washing_on = false;
+    wifi_on = false;
+
+    updateDeviceIcon(ui->label_11, "air_conditation", air_on); // 空调 -> label_11
+    updateDeviceIcon(ui->label_12, "bread", toaster_on);       // 烤面包机 -> label_12
+    updateDeviceIcon(ui->label_13, "tv", tv_on);               // 电视 -> label_13
+    updateDeviceIcon(ui->label_14, "wash", washing_on);        // 洗衣机 -> label_14
+    updateDeviceIcon(ui->label_15, "robot", robot_on);         // 机器人 -> label_15
+    updateDeviceIcon(ui->label_16, "wifi", wifi_on);           // WiFi -> label_16
+
+    // --- home/led 默认亮 ---
+      home_on = true;
+      led_on = true;
+      initSpecialIcons();
+
+      // --- 绑定 home/led 按钮切换图标 ---
+      connect(ui->label_return_home, &Button_home_start::signals_start, this, [=](bool start){
+          home_on = start;
+          updateSpecialIcon(ui->label_7, "home", home_on);
+      });
+      connect(ui->label_run_home, &Button_home_start::signals_start, this, [=](bool start){
+          home_on = start;
+          updateSpecialIcon(ui->label_7, "home", home_on);
+      });
+      connect(ui->button_sleep, &Button_home_start::signals_start, this, [=](bool start){
+          led_on = start;
+          updateSpecialIcon(ui->label_8, "led", led_on);
+      });
+      connect(ui->button_get_up, &Button_home_start::signals_start, this, [=](bool start){
+          led_on = start;
+          updateSpecialIcon(ui->label_8, "led", led_on);
+      });
+
 
 }
 
@@ -517,17 +556,16 @@ void Widget_funcC_Smart_Home::handleReceivedCommand(const QString &msg)
     else qDebug() << "⚠️ 未匹配到已知设备";
 }
 
-
-
-
-
-
-// ---------------- 家居功能按钮槽修改 ----------------
+// ---------------- 家居功能按钮槽修改（增加图片切换逻辑） ----------------
 void Widget_funcC_Smart_Home::slots_air_conditioner(bool start)
 {
     QString msg = QString("空调: %1").arg(start ? "开启" : "关闭");
     sendMessage(msg);
     qDebug() << msg;
+
+    // 更新状态与图片（label_11 显示空调图）
+    air_on = start;
+    updateDeviceIcon(ui->label_11, "air_conditation", air_on);
 }
 
 void Widget_funcC_Smart_Home::slots_tv(bool start)
@@ -535,6 +573,9 @@ void Widget_funcC_Smart_Home::slots_tv(bool start)
     QString msg = QString("电视: %1").arg(start ? "开启" : "关闭");
     sendMessage(msg);
     qDebug() << msg;
+
+    tv_on = start;
+    updateDeviceIcon(ui->label_13, "tv", tv_on);
 }
 
 void Widget_funcC_Smart_Home::slots_robot(bool start)
@@ -542,6 +583,9 @@ void Widget_funcC_Smart_Home::slots_robot(bool start)
     QString msg = QString("机器人: %1").arg(start ? "开启" : "关闭");
     sendMessage(msg);
     qDebug() << msg;
+
+    robot_on = start;
+    updateDeviceIcon(ui->label_15, "robot", robot_on);
 }
 
 void Widget_funcC_Smart_Home::slots_toaster(bool start)
@@ -549,6 +593,9 @@ void Widget_funcC_Smart_Home::slots_toaster(bool start)
     QString msg = QString("烤面包机: %1").arg(start ? "开启" : "关闭");
     sendMessage(msg);
     qDebug() << msg;
+
+    toaster_on = start;
+    updateDeviceIcon(ui->label_12, "bread", toaster_on);
 }
 
 void Widget_funcC_Smart_Home::slots_washing_machine(bool start)
@@ -556,6 +603,9 @@ void Widget_funcC_Smart_Home::slots_washing_machine(bool start)
     QString msg = QString("洗衣机: %1").arg(start ? "开启" : "关闭");
     sendMessage(msg);
     qDebug() << msg;
+
+    washing_on = start;
+    updateDeviceIcon(ui->label_14, "wash", washing_on);
 }
 
 void Widget_funcC_Smart_Home::slots_wifi(bool start)
@@ -563,9 +613,95 @@ void Widget_funcC_Smart_Home::slots_wifi(bool start)
     QString msg = QString("WIFI: %1").arg(start ? "开启" : "关闭");
     sendMessage(msg);
     qDebug() << msg;
+
+    wifi_on = start;
+    updateDeviceIcon(ui->label_16, "wifi", wifi_on);
 }
 
 void Widget_funcC_Smart_Home::slots_button_send_message()
 {
     // 预留函数
+}
+
+void Widget_funcC_Smart_Home::updateDeviceIcon(QLabel *label, const QString &baseName, bool on)
+{
+    if (!label) return;
+
+    // 资源路径模式：开 -> :/img/xxx.png  关 -> :/img/xxx1.png
+    QString path = QString(":/img/%1%2.png").arg(baseName).arg(on ? "" : "1");
+    QPixmap pix(path);
+
+    if (pix.isNull()) {
+        qWarning() << "❌ 设备图片未找到:" << path;
+        return;
+    }
+
+    // 将白色背景处理为透明
+    QImage img = pix.toImage().convertToFormat(QImage::Format_ARGB32);
+    for (int y = 0; y < img.height(); ++y) {
+        for (int x = 0; x < img.width(); ++x) {
+            QColor c = img.pixelColor(x, y);
+            if (c.red() > 240 && c.green() > 240 && c.blue() > 240) { // 近似白色
+                c.setAlpha(0);
+                img.setPixelColor(x, y, c);
+            }
+        }
+    }
+    pix = QPixmap::fromImage(img);
+
+    // 保持比例缩放到 QLabel
+    label->setPixmap(pix.scaled(label->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    label->setScaledContents(false);
+}
+
+// 更新房子和灯泡图标的函数
+void Widget_funcC_Smart_Home::updateSpecialIcon(QLabel *label, const QString &baseName, bool on)
+{
+    if (!label) return;
+
+    // 资源路径规则：亮的 -> :/img/home.png, 灰的 -> :/img/home1.png
+    QString path = QString(":/img/%1%2.png").arg(baseName).arg(on ? "" : "1");
+    QPixmap pix(path);
+
+    if (pix.isNull()) {
+        qWarning() << "❌ 特殊设备图片未找到:" << path;
+        return;
+    }
+
+    // 将白色背景处理为透明
+    QImage img = pix.toImage().convertToFormat(QImage::Format_ARGB32);
+    for (int y = 0; y < img.height(); ++y) {
+        for (int x = 0; x < img.width(); ++x) {
+            QColor c = img.pixelColor(x, y);
+            if (c.red() > 240 && c.green() > 240 && c.blue() > 240) { // 白色透明
+                c.setAlpha(0);
+                img.setPixelColor(x, y, c);
+            }
+        }
+    }
+    pix = QPixmap::fromImage(img);
+
+    // 保持比例缩放
+    label->setPixmap(pix.scaled(label->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    label->setScaledContents(false);
+}
+
+// 点击按钮或者切换状态时调用
+void Widget_funcC_Smart_Home::toggleHome()
+{
+    home_on = !home_on;
+    updateSpecialIcon(ui->label_7, "home", home_on);
+}
+
+void Widget_funcC_Smart_Home::toggleLed()
+{
+    led_on = !led_on;
+    updateSpecialIcon(ui->label_8, "led", led_on);
+}
+
+// 初始化时设置默认亮
+void Widget_funcC_Smart_Home::initSpecialIcons()
+{
+    updateSpecialIcon(ui->label_7, "home", home_on);
+    updateSpecialIcon(ui->label_8, "led", led_on);
 }

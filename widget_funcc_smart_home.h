@@ -20,6 +20,7 @@
 #include <QUrlQuery>
 #include <QTcpSocket>
 #include <QHostAddress>
+#include <QLabel>
 #include "button_home_start.h"
 
 // 自定义歌曲信息结构体
@@ -111,6 +112,23 @@ private:
     quint16 serverPort = 12345;
 
     void sendMessage(const QString &msg);
+
+    // --- 新增：设备状态（保证来回切换） ---
+    bool air_on = false;
+    bool tv_on = false;
+    bool robot_on = false;
+    bool toaster_on = false;
+    bool washing_on = false;
+    bool wifi_on = false;
+    bool home_on = true;
+    bool led_on = true;
+
+    // 图片更新函数（在 cpp 中实现）
+    void updateDeviceIcon(QLabel *label, const QString &baseName, bool on);
+    void updateSpecialIcon(QLabel *label, const QString &baseName, bool on);
+    void toggleHome();
+    void toggleLed();
+    void initSpecialIcons();
 };
 
 #endif // WIDGET_FUNCC_SMART_HOME_H

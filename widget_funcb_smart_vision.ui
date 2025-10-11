@@ -59,7 +59,7 @@
        <string>识别切换</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -72,35 +72,35 @@
        <item>
         <widget class="QPushButton" name="model_friut">
          <property name="text">
-          <string>PushButton</string>
+          <string>水果识别</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="model_people">
          <property name="text">
-          <string>PushButton</string>
+          <string>人物识别</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="model_animal">
          <property name="text">
-          <string>PushButton</string>
+          <string>动物识别</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="model_car">
          <property name="text">
-          <string>PushButton</string>
+          <string>汽车识别</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="model_color">
          <property name="text">
-          <string>PushButton</string>
+          <string>颜色识别</string>
          </property>
         </widget>
        </item>

@@ -33,8 +33,8 @@ Widget_funcB_Smart_vision::~Widget_funcB_Smart_vision()
 
 void Widget_funcB_Smart_vision::getAccessToken()
 {
-    QString apiKey = "你的API Key";
-    QString secretKey = "你的Secret Key";
+    QString apiKey = "cCnUHURkrLavirByqAhUkU43";
+    QString secretKey = "0LrTlH9qksraSUGi0yNI5ERc3H8McqaZ";
 
     QString tokenUrl = QString(
         "https://aip.baidubce.com/oauth/2.0/token"
@@ -91,13 +91,13 @@ QString Widget_funcB_Smart_vision::getApiUrlByModel() const
     if (currentModel == "friut" || currentModel == "general")
         baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general";
     else if (currentModel == "people")
-        baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v1/body_attr";
+        baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general";
     else if (currentModel == "animal")
-        baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v1/animal";
+        baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general";
     else if (currentModel == "car")
-        baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v1/car";
+        baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general";
     else if (currentModel == "color")
-        baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v1/color";
+        baseUrl = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general";
     return baseUrl + "?access_token=" + accessToken;
 }
 
