@@ -46,7 +46,7 @@ void Widget_funcA_Smart_chat::Slota_Add_Send_Message()
     QUrl url("https://open.bigmodel.cn/api/paas/v4/chat/completions");
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    request.setRawHeader("Authorization", "Bearer 02920344c0ba4322be305282ad4e05de.FxmlkIFqS0riG0CD");
+    request.setRawHeader("Authorization", "Bearer 你的key");
 
     QJsonObject msg;
     msg["role"] = "user";

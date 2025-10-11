@@ -33,8 +33,8 @@ Widget_funcB_Smart_vision::~Widget_funcB_Smart_vision()
 
 void Widget_funcB_Smart_vision::getAccessToken()
 {
-    QString apiKey = "cCnUHURkrLavirByqAhUkU43";
-    QString secretKey = "0LrTlH9qksraSUGi0yNI5ERc3H8McqaZ";
+    QString apiKey = "你的key";
+    QString secretKey = "你的key";
 
     QString tokenUrl = QString(
         "https://aip.baidubce.com/oauth/2.0/token"
