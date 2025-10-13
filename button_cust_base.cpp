@@ -1,12 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义控件 标签按钮 父类
- @FileName :    button_cust_base.cpp
- @Version :     1.0
-************************************************/
-
 #include "button_cust_base.h"
 
 Button_Cust_Base::Button_Cust_Base(QWidget *parent) : QLabel(parent)

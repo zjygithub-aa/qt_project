@@ -1,12 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义控件 关闭按钮
- @FileName :    button_main_close.cpp
- @Version :     1.0
-************************************************/
-
 #include "button_main_close.h"
 
 Button_Main_Close::Button_Main_Close(QWidget *parent) : Button_Cust_Base(parent)

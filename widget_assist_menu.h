@@ -1,19 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     窗口 菜单
- @FileName :    widget_assist_menu.h
- @Version :     1.0
-************************************************/
-
-
-
-
-
-
-
-
 #ifndef WIDGET_ASSIST_MENU_H
 #define WIDGET_ASSIST_MENU_H
 

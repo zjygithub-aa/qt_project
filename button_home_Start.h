@@ -1,14 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义控件 智能家具 状态按钮
- @FileName :    button_home_start.h
- @Version :     1.0
-************************************************/
-
-
-
 #ifndef BUTTON_HOME_H
 #define BUTTON_HOME_H
 

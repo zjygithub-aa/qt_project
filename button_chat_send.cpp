@@ -1,13 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义控件 - 发送按钮
- @FileName :    button_chat_base.cpp
- @Version :     1.0
-************************************************/
-
-
 #include "button_chat_send.h"
 
 Button_Chat_Send::Button_Chat_Send(QWidget *parent) : Button_Cust_Base(parent)

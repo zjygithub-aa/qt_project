@@ -1,19 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     窗口 背景
- @FileName :    widget_assist_backdrop.h
- @Version :     1.0
-************************************************/
-
-
-
-
-
-
-
-
 #ifndef WIDGET_ASSIST_BACKDROP_H
 #define WIDGET_ASSIST_BACKDROP_H
 

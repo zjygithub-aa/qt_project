@@ -1,15 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义控件 关闭按钮
- @FileName :    button_main_close.h
- @Version :     1.0
-************************************************/
-
-
-
-
 #ifndef BUTTON_MAIN_CLOSE_H
 #define BUTTON_MAIN_CLOSE_H
 

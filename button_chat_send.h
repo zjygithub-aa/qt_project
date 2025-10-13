@@ -1,14 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义控件 - 发送按钮
- @FileName :    button_chat_base.h
- @Version :     1.0
-************************************************/
-
-
-
 #ifndef BUTTON_CHAT_SEND_H
 #define BUTTON_CHAT_SEND_H
 

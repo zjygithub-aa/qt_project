@@ -1,15 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义控件 标签按钮 父类
- @FileName :    button_cust_base.h
- @Version :     1.0
-************************************************/
-
-
-
-
 #ifndef BUTTON_CUST_BASE_H
 #define BUTTON_CUST_BASE_H
 

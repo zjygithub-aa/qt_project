@@ -1,13 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义控件 菜单按钮
- @FileName :    button_main_menu.cpp
- @Version :     1.0
-************************************************/
-
-
 #include "button_main_menu.h"
 
 Button_Main_Menu::Button_Main_Menu(QWidget *parent) : Button_Cust_Base(parent)

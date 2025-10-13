@@ -1,18 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     线程  智能家居
- @FileName :    thread_funca_smart_home.h
- @Version :     1.0
-************************************************/
-
-
-
-
-
-
-
 #ifndef THREAD_FUNCC_SMART_HOME_H
 #define THREAD_FUNCC_SMART_HOME_H
 

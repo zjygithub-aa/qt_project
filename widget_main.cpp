@@ -1,12 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     主窗口
- @FileName :    widget_main.cpp
- @Version :     1.0
-************************************************/
-
 #include "widget_main.h"
 #include "ui_widget_main.h"
 
@@ -55,7 +46,7 @@ Widget_Main::Widget_Main(QWidget *parent)
     
     /*************************** 3、菜单设置 ***************************/
     // 3.1 设定头像位置 头像居中
-    ui->label_head_img->setPixmap(QPixmap(":/头像"));
+    ui->label_head_img->setPixmap(QPixmap(":/img/head_img.png"));
     ui->label_head_img->setScaledContents(true);
     
     // 3.2 设定菜单

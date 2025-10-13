@@ -104,6 +104,7 @@ void Widget_funcD_Weather::onReplyFinished(QNetworkReply *reply)
 }
 
 // ------------------ 更新UI ------------------
+// ------------------ 更新UI ------------------
 void Widget_funcD_Weather::updateWeatherUI(const QJsonObject &data)
 {
     ui->cityLabel->setText(data["cityInfo"].toObject()["city"].toString());
@@ -113,7 +114,17 @@ void Widget_funcD_Weather::updateWeatherUI(const QJsonObject &data)
         .arg(data["shidu"].toString())
         .arg(data["forecast"].toArray()[0].toObject()["fl"].toString())
     );
-    ui->dateLabel->setText(data["forecast"].toArray()[0].toObject()["date"].toString());
+
+    // 获取日期并处理
+    QString dayStr = data["forecast"].toArray()[0].toObject()["date"].toString(); // 可能是 "14日"
+    dayStr.remove("日"); // 去掉 "日"
+    QDate today = QDate::currentDate();
+    QString fullDate = QString("%1-%2-%3")
+                       .arg(today.year())
+                       .arg(today.month(), 2, 10, QChar('0'))
+                       .arg(dayStr.toInt(), 2, 10, QChar('0'));
+    ui->dateLabel->setText(fullDate); // 显示 "2025-10-14"
+
     ui->weatherDescLabel->setText(data["forecast"].toArray()[0].toObject()["type"].toString());
 
     QString weatherType = ui->weatherDescLabel->text();
@@ -156,15 +167,17 @@ void Widget_funcD_Weather::updateWeatherUI(const QJsonObject &data)
         chartWidget->setData(highList, lowList);
 }
 
+
 // ------------------ 获取天气图标 ------------------
 QPixmap Widget_funcD_Weather::getWeatherIcon(const QString &type)
 {
-    if (type.contains("晴")) return QPixmap(":/icons/sun.png");
-    if (type.contains("云")) return QPixmap(":/icons/cloud.png");
-    if (type.contains("雨")) return QPixmap(":/icons/rain.png");
-    if (type.contains("雪")) return QPixmap(":/icons/snow.png");
-    if (type.contains("阴")) return QPixmap(":/icons/overcast.png");
-    return QPixmap(":/icons/default.png");
+    if (type.contains("晴")) return QPixmap(":/img/sun.png");
+    if (type.contains("云")) return QPixmap(":/img/cloud.png");
+    if (type.contains("雨")) return QPixmap(":/img/rain.png");
+    if (type.contains("雪")) return QPixmap(":/img/snow.png");
+    if (type.contains("阴")) return QPixmap(":/img/wind.png");
+    if (type.contains("霾")) return QPixmap(":/img/smog.png");
+    return QPixmap(":/img/window.png");
 }
 
 void Widget_funcD_Weather::paintEvent(QPaintEvent *)

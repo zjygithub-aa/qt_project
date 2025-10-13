@@ -1,13 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     窗口 菜单
- @FileName :    widget_assist_menu.cpp
- @Version :     1.0
-************************************************/
-
-
 #include "widget_assist_menu.h"
 
 Widget_Assist_Menu::Widget_Assist_Menu(QWidget *parent) : QWidget(parent)

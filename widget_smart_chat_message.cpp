@@ -1,12 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     自定义窗口 智能对话窗口
- @FileName :    widget_smart_chat_message.cpp
- @Version :     1.0
-************************************************/
-
 #include "widget_smart_chat_message.h"
 #include <QDebug>
 #include <QTextCursor>

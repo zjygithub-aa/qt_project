@@ -1,12 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     功能窗口 智能视觉
- @FileName :    widget_funcb_smart_vision.h
- @Version :     1.0
-************************************************/
-
 #ifndef WIDGET_FUNCB_SMART_VISION_H
 #define WIDGET_FUNCB_SMART_VISION_H
 

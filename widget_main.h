@@ -1,14 +1,3 @@
-/***********************************************
- @Name :        小谭老师
- @Time :        2025-2-22
- @Email :       tan.zhipeng@outlook.com
- @Comment :     主窗口
- @FileName :    widget_main.h
- @Version :     1.0
-************************************************/
-
-
-
 #ifndef WIDGET_MAIN_H
 #define WIDGET_MAIN_H
 
