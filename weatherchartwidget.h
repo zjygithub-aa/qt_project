@@ -10,7 +10,7 @@ class WeatherChartWidget : public QWidget
 public:
     explicit WeatherChartWidget(QWidget *parent = nullptr);
 
-    void setData(const QList<int> &highs, const QList<int> &lows);
+    void setData(const QList<int> &highs, const QList<int> &lows, const QStringList &weeks);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -18,6 +18,7 @@ protected:
 private:
     QList<int> highList;
     QList<int> lowList;
+    QStringList weekList;
 };
 
 #endif // WEATHERCHARTWIDGET_H

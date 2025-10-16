@@ -38,5 +38,9 @@
         <file>img/sun.png</file>
         <file>img/wind.png</file>
         <file>img/smog.png</file>
+        <file>img/backgroud.jpeg</file>
+        <file>img/disk.jpg</file>
+        <file>img/last.png</file>
+        <file>img/next.png</file>
     </qresource>
 </RCC>
